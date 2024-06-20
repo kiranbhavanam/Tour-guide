@@ -1,13 +1,17 @@
 import React from 'react'
-import tours from './data/data'
 import Cards from './Cards'
-const Tours = () => {
+const Tours = ({tours,removeHandler}) => {
     
   return (
-    <div>
-        <h1>Trip planner</h1>
-        <Cards tours={tours}></Cards>
-    </div>
+        <div  className='border-4 w-full h-full'>
+          {
+            tours.map(tour=>{
+              return(
+                  <Cards  {...tour} removeHandler={removeHandler}></Cards>
+              )
+            })
+          }
+        </div>
   )
 }
 
