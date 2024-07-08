@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Cards from './Cards'
+import { Switch } from './data/Switch';
 const Tours = ({tours,setTours,removeHandler}) => {
     const [sort,setSort]=useState("");
     function sortHandler(e){
@@ -31,6 +32,7 @@ const Tours = ({tours,setTours,removeHandler}) => {
               <option value="city">city</option>
             </select>
           </div>
+          <Switch></Switch>
           {
             tours.map(tour=>{
               return(
