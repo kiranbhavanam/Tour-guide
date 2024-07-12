@@ -1,13 +1,15 @@
 import React, { useState } from "react";
+import { useTheme } from "./Theme";
 
 const Cards = ({ image, city, cost, description ,removeHandler}) => {
     const [readmore,setReadmore]=useState(true)
     function readmoreHandler(){
         setReadmore(!readmore)
     }
+    const {theme}=useTheme();
 const descdata= readmore?`${description.substring(0,50)}.....`:description
   return (
-    <div className="w-[300px] border shadow-md  p-4">
+    <div className={`${theme === "light" ? "card-white bg-gray-100 border-gray-300" : "card-black bg-gray-800 border-gray-700"} w-[300px] border shadow-md p-4`}>
       <div className=" Image h-[300px]">
         <img src={image} alt="" className=" w-full h-full object-cover" />
       </div>
@@ -24,7 +26,7 @@ const descdata= readmore?`${description.substring(0,50)}.....`:description
       </div>
       <div className="flex justify-center mt-2">
 
-      <button className="border px-4 py-2 border-dashed border-[#EF0107] text-[#EF0107] bg-gray-200 rounded-md" onClick={()=>removeHandler(image)}>NOT INTERESTED</button>
+      <button className={`border px-4 py-2 border-dashed ${theme==="dark"?"border-[#EF0107] text-[#EF0107] bg-gray-200":"border-gray-200 text-gray-200 bg-[#EF0107]"} rounded-md`} onClick={()=>removeHandler(image)}>NOT INTERESTED</button>
       </div>
     </div>
   );
