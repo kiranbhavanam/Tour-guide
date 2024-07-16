@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import { useTheme } from "./Theme";
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const Cards = ({ image, city, cost, description ,removeHandler}) => {
     const [readmore,setReadmore]=useState(true)
     function readmoreHandler(){
         setReadmore(!readmore)
+    }
+    function favouriteHandler(){
+      toast("Added to favourites!")
     }
     const {theme}=useTheme();
 const descdata= readmore?`${description.substring(0,50)}.....`:description
@@ -20,8 +24,9 @@ const descdata= readmore?`${description.substring(0,50)}.....`:description
           <h1 className="text-2xl font-semibold text-orange-600">{city}</h1>
           <h4 className="text-xl font-mono text-green-600 font-bold">${cost}</h4>
         </div>
-        <div className="absolute right-4 ">
+        <div className="absolute right-4 hover:cursor-pointer " onClick={favouriteHandler}>
       <i class="fa-solid fa-heart"></i>
+      <ToastContainer/>
             </div>
         <div className={` Tour-info mt-2 ${readmore ? 'max-h-20' : 'max-h-full'} overflow-hidden transition-all duration-500 ease-in-out`}>
           <div className="text-sm ">{descdata}
