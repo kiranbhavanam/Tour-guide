@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Cards from './Cards'
 import { Switch } from './data/Switch';
 import { useTheme } from './Theme';
-const Tours = ({tours,setTours,removeHandler}) => {
+const Tours = ({tours,setTours,removeHandler,favouriteHandler}) => {
     const [sort,setSort]=useState("");
     function sortHandler(e){
       setSort(e.target.value);
@@ -38,7 +38,7 @@ const Tours = ({tours,setTours,removeHandler}) => {
             tours.map(tour=>{
               console.log("theme:",theme);
               return(
-                  <Cards key={tour.id} {...tour} removeHandler={removeHandler}></Cards>
+                  <Cards key={tour.id} {...tour} removeHandler={removeHandler} favouriteHandler={favouriteHandler}></Cards>
               )
             })
           }
